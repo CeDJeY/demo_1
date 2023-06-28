@@ -38,11 +38,11 @@ import Divider from "@mui/material/Divider";
 import Icon from "@mui/material/Icon";
 
 // Material Dashboard 2 React components
-import MDBox from "../MDBox";
-import MDTypography from "../MDTypography";
+import MDBox from "../../../MDBox";
+import MDTypography from "../../../MDTypography";
 
 // ReportsLineChart configurations
-import configs from "examples/Charts/LineCharts/ReportsLineChart/configs";
+import configs from "./configs";
 
 ChartJS.register(
   CategoryScale,

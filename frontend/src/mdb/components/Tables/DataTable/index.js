@@ -30,14 +30,14 @@ import Icon from "@mui/material/Icon";
 import Autocomplete from "@mui/material/Autocomplete";
 
 // Material Dashboard 2 React components
-import MDBox from "../MDBox";
-import MDTypography from "../MDTypography";
-import MDInput from "../MDInput";
-import MDPagination from "../MDPagination";
+import MDBox from "../../MDBox";
+import MDTypography from "../../MDTypography";
+import MDInput from "../../MDInput";
+import MDPagination from "../../MDPagination";
 
 // Material Dashboard 2 React example components
-import DataTableHeadCell from "examples/Tables/DataTable/DataTableHeadCell";
-import DataTableBodyCell from "examples/Tables/DataTable/DataTableBodyCell";
+import DataTableHeadCell from "./DataTableHeadCell";
+import DataTableBodyCell from "./DataTableBodyCell";
 
 function DataTable({
   entriesPerPage,
