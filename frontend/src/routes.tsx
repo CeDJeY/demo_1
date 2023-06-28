@@ -1,5 +1,5 @@
 import Icon from '@mui/material/Icon';
-import Dashboard from './layouts/dashboard';
+import Dashboard from './layouts/Dashboard';
 import Tables from './layouts/tables';
 
 

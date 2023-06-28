@@ -3,7 +3,6 @@ import MDBox from '../../mdb/components/MDBox';
 
 import DashboardLayout from '../../mdb/components/LayoutContainers/DashboardLayout';
 import DashboardNavbar from '../../mdb/components/Navbars/DashboardNavbar';
-import Footer from '../../mdb/components/Footer';
 import ReportsBarChart from '../../mdb/components/Charts/BarCharts/ReportsBarChart';
 import ReportsLineChart from '../../mdb/components/Charts/LineCharts/ReportsLineChart';
 import ComplexStatisticsCard from '../../mdb/components/Cards/StatisticsCards/ComplexStatisticsCard';
@@ -12,16 +11,12 @@ import ComplexStatisticsCard from '../../mdb/components/Cards/StatisticsCards/Co
 import reportsBarChartData from './data/reportsBarChartData';
 import reportsLineChartData from './data/reportsLineChartData';
 
-// Dashboard components
-import Projects from '../../components/Projects';
-import OrdersOverview from '../../components/OrdersOverview';
-
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
 
   return (
     <DashboardLayout>
-      <DashboardNavbar />
+      <DashboardNavbar isMini />
       <MDBox py={3}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={3}>
@@ -125,18 +120,7 @@ function Dashboard() {
             </Grid>
           </Grid>
         </MDBox>
-        <MDBox>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={8}>
-              <Projects />
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <OrdersOverview />
-            </Grid>
-          </Grid>
-        </MDBox>
       </MDBox>
-      <Footer />
     </DashboardLayout>
   );
 }
