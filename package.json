@@ -1,0 +1,12 @@
+{
+  "name": "assignment",
+  "private": true,
+  "version": "1.0.0",
+  "repository": "https://github.com/CeDJeY/demo_1.git",
+  "author": "serhii.poliarush <cedjey@gmail.com>",
+  "license": "MIT",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ]
+}
