@@ -21,8 +21,8 @@ import Card from "@mui/material/Card";
 import Icon from "@mui/material/Icon";
 
 // Material Dashboard 2 React components
-import MDBox from "../MDBox";
-import MDTypography from "../MDTypography";
+import MDBox from "../../../MDBox";
+import MDTypography from "../../../MDTypography";
 
 // Images
 import pattern from "assets/images/illustrations/pattern-tree.svg";

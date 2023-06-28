@@ -35,14 +35,14 @@ import Card from "@mui/material/Card";
 import Icon from "@mui/material/Icon";
 
 // Material Dashboard 2 React components
-import MDBox from "../MDBox";
-import MDTypography from "../MDTypography";
+import MDBox from "../../../MDBox";
+import MDTypography from "../../../MDTypography";
 
 // HorizontalBarChart configurations
-import configs from "examples/Charts/BarCharts/HorizontalBarChart/configs";
+import configs from "./configs";
 
 // Material Dashboard 2 React base styles
-import colors from "assets/theme/base/colors";
+import colors from "../../../../assets/theme/base/colors";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 

@@ -35,11 +35,11 @@ import Card from "@mui/material/Card";
 import Icon from "@mui/material/Icon";
 
 // Material Dashboard 2 React components
-import MDBox from "../MDBox";
-import MDTypography from "../MDTypography";
+import MDBox from "../../../MDBox";
+import MDTypography from "../../../MDTypography";
 
 // VerticalBarChart configurations
-import configs from "examples/Charts/BarCharts/VerticalBarChart/configs";
+import configs from "./configs";
 
 // Material Dashboard 2 React base styles
 import colors from "assets/theme/base/colors";
