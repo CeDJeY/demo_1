@@ -5,6 +5,9 @@
   "repository": "https://github.com/CeDJeY/demo_1.git",
   "author": "serhii.poliarush <cedjey@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node scripts/start.js"
+  },
   "workspaces": [
     "frontend",
     "backend"
