@@ -26,5 +26,6 @@ declare namespace Demo {
     reports: number;
     partners: number;
     countries: number;
+    rate: number;
   }
 }

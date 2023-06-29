@@ -9,7 +9,7 @@ export default function ReportsRateWidget() {
     <ComplexStatisticsCard
       icon="av_timer"
       title="Reports rate"
-      count={'...'}
+      count={stats?.rate ?? '...'}
       percentage={{
         color: 'success',
         amount: '',
