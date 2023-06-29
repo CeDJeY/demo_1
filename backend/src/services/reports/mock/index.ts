@@ -2,7 +2,7 @@ import crypto from 'node:crypto';
 
 
 const countryCodes = ['us', 'ca', 'gb', 'de', 'fr', 'es', 'it', 'br', 'cn', 'jp'];
-const partners: string[] = Array.from({ length: 50 }, () => crypto.randomUUID());
+const partners: string[] = Array.from({ length: random(35, 50) }, () => crypto.randomUUID());
 
 function random(from: number, to: number): number {
   const range = to - from;

@@ -1,6 +1,6 @@
 import Icon from '@mui/material/Icon';
 import DashboardLayout from './layouts/Dashboard';
-import Tables from './layouts/tables';
+// TODO add more layouts here for this Demo
 
 
 const routes = [
@@ -11,14 +11,6 @@ const routes = [
     icon: <Icon fontSize="small">dashboard</Icon>,
     route: "/dashboard",
     component: <DashboardLayout />,
-  },
-  {
-    type: "collapse",
-    name: "Tables",
-    key: "tables",
-    icon: <Icon fontSize="small">table_view</Icon>,
-    route: "/tables",
-    component: <Tables />,
   },
 ];
 

@@ -19,7 +19,7 @@ export default function Dashboard() {
     const from = new Date(to.getTime() - 1000 * 60 * 60 * 24 * 5); // Take last 5 days for now
     // TODO use react's useState hook to point the selected range
     fetchInRange(from, to);
-  }, []);
+  }, [fetchInRange]);
 
   return (
     <DashboardLayout>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Navigate, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -10,7 +10,7 @@ import routes from './routes';
 
 
 function App() {
-  const [ controller, dispatch ] = useMaterialUIController();
+  const [ controller ] = useMaterialUIController();
   const { sidenavColor } = controller;
 
   return (
