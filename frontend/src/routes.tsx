@@ -1,5 +1,5 @@
 import Icon from '@mui/material/Icon';
-import Dashboard from './layouts/Dashboard';
+import DashboardLayout from './layouts/Dashboard';
 import Tables from './layouts/tables';
 
 
@@ -10,7 +10,7 @@ const routes = [
     key: "dashboard",
     icon: <Icon fontSize="small">dashboard</Icon>,
     route: "/dashboard",
-    component: <Dashboard />,
+    component: <DashboardLayout />,
   },
   {
     type: "collapse",
