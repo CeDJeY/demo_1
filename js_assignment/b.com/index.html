@@ -3,28 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <title>B.COM</title>
-  <script>
-    window.addEventListener("message", (event) => {
-      console.log('B event', event);
-      if (event.origin !== "http://localhost:8005") {
-        return; // Do nothing if you didn't receive the message from A.com
-      }
-      const messageAreaB = document.getElementById("messageAreaB");
-      messageAreaB.textContent += "Participant A: " + event.data + "\n";
-    }, false);
-
-    function sendMessageToA() {
-      const messageInput = document.getElementById("messageInputB").value;
-      window.parent.postMessage(messageInput, "http://localhost:8005");
-      const messageAreaB = document.getElementById("messageAreaB");
-      messageAreaB.textContent += "Participant B: " + messageInput + "\n";
-    }
-  </script>
 </head>
 <body>
   <h1>B.com</h1>
-  <textarea id="messageAreaB" rows="10" cols="30"></textarea><br>
-  <input id="messageInputB" type="text" placeholder="Type your message...">
-  <button onclick="sendMessageToA()">Send</button>
+  <textarea id="textArea" rows="15" cols="30" readonly></textarea><br>
+  <input id="input" type="text" placeholder="Type your message...">
+  <button onclick="sendMessage()">Send</button>
 </body>
+<script>
+  const otherOrigin = 'http://localhost:8005';
+  const textArea = document.getElementById('textArea');
+  const input = document.getElementById('input');
+
+  textArea.addEventListener('click', () => input.focus());
+
+  window.addEventListener('message', (event) => {
+    if (event.origin !== otherOrigin) return;
+    textArea.textContent += `other:> ${event.data} \n`;
+  });
+
+  function sendMessage() {
+    const message = input.value;
+    window.parent.postMessage(message, otherOrigin);
+    textArea.textContent += `me:> ${message} \n`;
+    input.value = '';
+  }
+</script>
 </html>

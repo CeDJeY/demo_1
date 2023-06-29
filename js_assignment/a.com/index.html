@@ -17,37 +17,41 @@
       height: 400px;
     }
   </style>
-  <script>
-    window.addEventListener("message", (event) => {
-      console.log('A event', event);
-      if (event.origin !== "http://localhost:8006") {
-        return; // Do nothing if you didn't receive the message from B.com
-      }
-      const messageAreaA = document.getElementById("messageAreaA");
-      messageAreaA.textContent += "Participant B: " + event.data + "\n";
-    }, false);
 
-    function sendMessageToB() {
-      const messageInput = document.getElementById("messageInputA").value;
-      const iframe = document.getElementById("chatFrame");
-      iframe.contentWindow.postMessage(messageInput, "http://localhost:8006");
-      const messageAreaA = document.getElementById("messageAreaA");
-      messageAreaA.textContent += "Participant A: " + messageInput + "\n";
-    }
-  </script>
 </head>
 <body>
   <div class="container">
     <div class="chatBox">
       <h1>A.com</h1>
-      <textarea id="messageAreaA" rows="10" cols="30"></textarea>
+      <textarea id="textArea" rows="15" cols="30" readonly></textarea>
       <br>
-      <input id="messageInputA" type="text" placeholder="Type your message...">
-      <button onclick="sendMessageToB()">Send</button>
+      <input id="input" type="text" placeholder="Type your message...">
+      <button onclick="sendMessage()">Send</button>
     </div>
     <div>
-      <iframe id="chatFrame" src="http://localhost:8006"></iframe>
+      <iframe id="iframe"></iframe>
     </div>
   </div>
 </body>
+<script>
+  const otherOrigin = 'http://localhost:8006';
+  const textArea = document.getElementById('textArea');
+  const input = document.getElementById('input');
+  const iframe = document.getElementById('iframe');
+  iframe.src = otherOrigin;
+
+  textArea.addEventListener('click', () => input.focus());
+
+  window.addEventListener('message', (event) => {
+    if (event.origin !== otherOrigin) return;
+    textArea.textContent += `other:> ${event.data} \n`;
+  });
+
+  function sendMessage() {
+    const message = input.value;
+    iframe.contentWindow.postMessage(message, otherOrigin);
+    textArea.textContent += `me:> ${message} \n`;
+    input.value = '';
+  }
+</script>
 </html>
