@@ -16,4 +16,13 @@ declare namespace Demo {
     creationdate: number;
     id: string;
   }
+
+  interface Range {
+    from: number;
+    to: number;
+  }
+
+  interface CountResponse {
+    count: number;
+  }
 }
