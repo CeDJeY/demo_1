@@ -22,7 +22,9 @@ declare namespace Demo {
     to: number;
   }
 
-  interface CountResponse {
-    count: number;
+  interface ReportsStats {
+    reports: number;
+    partners: number;
+    countries: number;
   }
 }

@@ -6,39 +6,20 @@ import { ReportsService } from '@services/reports';
 export class AppController {
   constructor(private readonly reportsService: ReportsService) {}
 
-  @Get('/reports/count/:from/:to')
+  @Get('/reports/stats/:from/:to')
   // @UseGuards(AuthGuard('jwt')) Skip auth for the sake of simplicity
   // Skipping query params validation for the sake of simplicity
-  public countReports(
+  public async getReportsStats(
     @Param('from') from,
     @Param('to') to,
-  ): Demo.CountResponse {
-    return {
-      count: this.reportsService.countReports({ from, to })
-    };
-  }
-
-  @Get('/reports/partners/count/:from/:to')
-  // @UseGuards(AuthGuard('jwt')) Skip auth for the sake of simplicity
-  // Skipping query params validation for the sake of simplicity
-  public countReportsPartners(
-    @Param('from') from: number,
-    @Param('to') to: number,
-  ): Demo.CountResponse {
-    return {
-      count: this.reportsService.countReportsPartners({ from, to })
-    };
-  }
-
-  @Get('/reports/countries/count/:from/:to')
-  // @UseGuards(AuthGuard('jwt')) Skip auth for the sake of simplicity
-  // Skipping query params validation for the sake of simplicity
-  public countReportsCountries(
-    @Param('from') from: number,
-    @Param('to') to: number,
-  ): Demo.CountResponse {
-    return {
-      count: this.reportsService.countReportsCountries({ from, to })
-    };
+  ): Promise<Demo.ReportsStats> {
+    const range: Demo.Range = { from, to };
+    // Skipping the range validation for the sake of simplicity
+    const [ reports, partners, countries ] = await Promise.all([
+      this.reportsService.countReports(range),
+      this.reportsService.countReportsPartners(range),
+      this.reportsService.countReportsCountries(range),
+    ]);
+    return { reports, partners, countries };
   }
 }

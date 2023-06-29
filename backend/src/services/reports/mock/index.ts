@@ -2,6 +2,7 @@ import crypto from 'node:crypto';
 
 
 const countryCodes = ['us', 'ca', 'gb', 'de', 'fr', 'es', 'it', 'br', 'cn', 'jp'];
+const partners: string[] = Array.from({ length: 50 }, () => crypto.randomUUID());
 
 function random(from: number, to: number): number {
   const range = to - from;
@@ -22,6 +23,10 @@ function randomSubcategory(): string {
   return `Subcategory ${random(1, 30)}`;
 }
 
+function randomPartner(): string {
+  return partners[random(0, partners.length - 1)];
+}
+
 function randomDate(): number {
   const now = Date.now();
   const from = now - 1000 * 60 * 60 * 24 * 14; // 14 days for demo
@@ -34,7 +39,7 @@ const reportMocks: Demo.Report[] = Array.from({ length: 1000 }, () => ({
   countryid: randomCountry(),
   creationdate: randomDate(),
   id: crypto.randomUUID(),
-  clientid: crypto.randomUUID(),
+  clientid: randomPartner(),
   subcategory: randomSubcategory(),
 }));
 
