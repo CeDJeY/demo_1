@@ -14,7 +14,7 @@ export default function PartnersCountWidget() {
       percentage={{
         color: 'success',
         amount: '',
-        label: 'TODO !!!!!',
+        label: '',
       }}
     />
   </MDBox>
