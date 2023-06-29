@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A.COM</title>
+  <style>
+    .container {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: row;
+    }
+    .chatBox {
+      width: 400px;
+    }
+    iframe {
+      width: 400px;
+      height: 400px;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <div class="chatBox">
+      <h1>A.com</h1>
+      <textarea id="textArea" rows="15" cols="30" readonly></textarea>
+      <br>
+      <input id="input" type="text" placeholder="Type your message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+    <div>
+      <iframe id="iframe"></iframe>
+    </div>
+  </div>
+</body>
+<script>
+  const otherOrigin = 'http://localhost:8006';
+  const textArea = document.getElementById('textArea');
+  const input = document.getElementById('input');
+  const iframe = document.getElementById('iframe');
+  iframe.src = otherOrigin;
+
+  textArea.addEventListener('click', () => input.focus());
+
+  window.addEventListener('message', (event) => {
+    if (event.origin !== otherOrigin) return;
+    textArea.textContent += `other:> ${event.data} \n`;
+  });
+
+  function sendMessage() {
+    const message = input.value;
+    iframe.contentWindow.postMessage(message, otherOrigin);
+    textArea.textContent += `me:> ${message} \n`;
+    input.value = '';
+  }
+</script>
+</html>
