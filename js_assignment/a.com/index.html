@@ -1,10 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>A.COM</title>
+  <meta charset="UTF-8">
+  <title>A.COM</title>
+  <style>
+    .container {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: row;
+    }
+    .chatBox {
+      width: 400px;
+    }
+    iframe {
+      width: 400px;
+      height: 400px;
+    }
+  </style>
+  <script>
+    window.addEventListener("message", (event) => {
+      console.log('A event', event);
+      if (event.origin !== "http://localhost:8006") {
+        return; // Do nothing if you didn't receive the message from B.com
+      }
+      const messageAreaA = document.getElementById("messageAreaA");
+      messageAreaA.textContent += "Participant B: " + event.data + "\n";
+    }, false);
+
+    function sendMessageToB() {
+      const messageInput = document.getElementById("messageInputA").value;
+      const iframe = document.getElementById("chatFrame");
+      iframe.contentWindow.postMessage(messageInput, "http://localhost:8006");
+      const messageAreaA = document.getElementById("messageAreaA");
+      messageAreaA.textContent += "Participant A: " + messageInput + "\n";
+    }
+  </script>
 </head>
 <body>
-AAAAAAA
+  <div class="container">
+    <div class="chatBox">
+      <h1>A.com</h1>
+      <textarea id="messageAreaA" rows="10" cols="30"></textarea>
+      <br>
+      <input id="messageInputA" type="text" placeholder="Type your message...">
+      <button onclick="sendMessageToB()">Send</button>
+    </div>
+    <div>
+      <iframe id="chatFrame" src="http://localhost:8006"></iframe>
+    </div>
+  </div>
 </body>
 </html>
