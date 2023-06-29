@@ -1,0 +1,17 @@
+{
+  "name": "js_assignment",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "concurrently \"yarn start:A\" \"yarn start:B\" \"yarn open-browser\"",
+    "start:A": "http-server ./a.com -a localhost -p 8005 -c-1",
+    "start:B": "http-server ./b.com -a localhost -p 8006 -c-1",
+    "open-browser": "open-cli http://localhost:8005"
+  },
+  "dependencies": {
+    "concurrently": "8.2.0",
+    "http-server": "14.1.1",
+    "opn-cli": "5.0.0"
+  }
+}
