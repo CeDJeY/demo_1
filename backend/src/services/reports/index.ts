@@ -41,9 +41,12 @@ export class ReportsService {
       .size;
   }
 
+  /**
+   * Return approximate reports rate per day
+   * @param range
+   */
   public async getReportsRate(range = FULL_RANGE): Promise<number> {
     // Async for the demo purposes
-    // Returning approximate reports rate per day
     const deltaRange = (range.to - range.from) / (1000 * 60 * 60 * 24);
     console.log(deltaRange)
     return isFinite(deltaRange) && deltaRange > 0 ? await this.countReports(range) / deltaRange : 0;
