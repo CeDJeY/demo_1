@@ -7,6 +7,7 @@ export default function PartnersCountWidget() {
   const { stats } = useReportsStats();
   return <MDBox mb={1.5}>
     <ComplexStatisticsCard
+      color="success"
       icon="business"
       title="Partner count"
       count={stats?.partners ?? '...'}

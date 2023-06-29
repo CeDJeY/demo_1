@@ -7,8 +7,8 @@ export default function CountriesCountWidget() {
   const { stats } = useReportsStats();
   return <MDBox mb={1.5}>
     <ComplexStatisticsCard
-      color="success"
-      icon="weekend"
+      color="primary"
+      icon="info"
       title="Countries count"
       count={stats?.countries ?? '...'}
       percentage={{

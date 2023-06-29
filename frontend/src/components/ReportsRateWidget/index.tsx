@@ -7,8 +7,7 @@ export default function ReportsRateWidget() {
   const { stats } = useReportsStats();
   return <MDBox mb={1.5}>
     <ComplexStatisticsCard
-      color="primary"
-      icon="weekend"
+      icon="av_timer"
       title="Reports rate"
       count={'...'}
       percentage={{
