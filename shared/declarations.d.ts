@@ -27,5 +27,8 @@ declare namespace Demo {
     partners: number;
     countries: number;
     rate: number;
+    weekdayBreakdown: Record<string, number>;
+    countriesBreakdown: Record<string, number>;
+    categoriesBreakdown: Record<string, number>;
   }
 }

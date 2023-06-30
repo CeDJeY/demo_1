@@ -52,6 +52,43 @@ export class ReportsService {
     return isFinite(deltaRange) && deltaRange > 0 ? await this.countReports(range) / deltaRange : 0;
   }
 
+  public async countByWeekday(range = FULL_RANGE): Promise<Record<string, number>> {
+    return reportMocks.reduce((acc, { creationdate }) => {
+      if (this._inRange(range, creationdate)) {
+        const date = new Date(creationdate);
+        const day = date.getDay();
+        acc[day] = acc[day] ? acc[day] + 1 : 1;
+      }
+      return acc;
+    }, {});
+  }
+
+  public async countByCountries(range = FULL_RANGE): Promise<Record<string, number>> {
+    return reportMocks.reduce((acc, { countryid, creationdate }) => {
+      if (this._inRange(range, creationdate)) {
+        acc[countryid] = acc[countryid] ? acc[countryid] + 1 : 1;
+      }
+      return acc;
+    }, {});
+  }
+
+  public async countByCategories(range = FULL_RANGE): Promise<Record<string, number>> {
+    return reportMocks.reduce((acc, { category, creationdate }) => {
+      if (this._inRange(range, creationdate)) {
+        const categoryid = this._extractNumber(category);
+        if (isFinite(categoryid)) {
+          acc[categoryid] = acc[categoryid] ? acc[categoryid] + 1 : 1;
+        }
+      }
+      return acc;
+    }, {});
+  }
+
+  private _extractNumber(str: string): number | null {
+    const match = str.match(/(\d+(\.\d+)?)/);
+    return parseFloat(match[0]);
+  }
+
   private _inRange({ from, to }: Demo.Range, value: number): boolean {
     return value >= from && value <= to;
   }

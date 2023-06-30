@@ -5,11 +5,13 @@ import MDBox from '../../mdb/components/MDBox';
 import DashboardLayout from '../../mdb/components/LayoutContainers/DashboardLayout';
 import DashboardNavbar from '../../mdb/components/Navbars/DashboardNavbar';
 
+import useReportsStats from '../../hooks/reports-stats';
 import ReportsCountWidget from '../ReportsCountWidget';
 import PartnersCountWidget from '../PartnersCountWidget';
 import CountriesCountWidget from '../CountriesCountWidget';
 import ReportsRateWidget from '../ReportsRateWidget';
-import useReportsStats from '../../hooks/reports-stats';
+import WeekdayBreakdownWidget from '../WeekdayBreakdownWidget';
+import CountriesBreakdownWidget from '../CountriesBreakdownWidget';
 
 
 export default function Dashboard() {
@@ -39,6 +41,19 @@ export default function Dashboard() {
             <ReportsRateWidget />
           </Grid>
         </Grid>
+        <MDBox mt={4.5}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6} lg={4}>
+              <WeekdayBreakdownWidget />
+            </Grid>
+            <Grid item xs={12} md={6} lg={4}>
+              <CountriesBreakdownWidget />
+            </Grid>
+            <Grid item xs={12} md={6} lg={4}>
+
+            </Grid>
+          </Grid>
+        </MDBox>
       </MDBox>
     </DashboardLayout>
   );
