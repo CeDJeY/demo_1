@@ -1,26 +1,26 @@
 import { useMemo } from 'react';
 import useReportsStats from '../../hooks/reports-stats';
 import MDBox from '../../mdb/components/MDBox';
-import ReportsBarChart from '../../mdb/components/Charts/BarCharts/ReportsBarChart';
+import ReportsLineChart from '../../mdb/components/Charts/LineCharts/ReportsLineChart';
 
 
-export default function CountriesBreakdownWidget() {
+export default function CategoriesBreakdownWidget() {
   const { stats } = useReportsStats();
 
   const data = useMemo(() => {
     const labels: string[] = [];
     const data: number[] = [];
-    for (const [ countryCode, value ] of Object.entries(stats?.countriesBreakdown ?? {})) {
-      labels.push(countryCode);
+    for (const [ category, value ] of Object.entries(stats?.categoriesBreakdown ?? {})) {
+      labels.push(category);
       data.push(value);
     }
     return { labels, datasets: {  label: 'Requests', data } };
-  }, [stats?.countriesBreakdown]);
+  }, [stats?.categoriesBreakdown]);
 
   return <MDBox mb={3}>
-    <ReportsBarChart
-      color="info"
-      title="Breakdown by countries"
+    <ReportsLineChart
+      color="primary"
+      title="Breakdown by category"
       date="updated just now"
       chart={data}
     />

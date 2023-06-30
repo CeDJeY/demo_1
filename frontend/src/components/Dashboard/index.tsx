@@ -12,13 +12,14 @@ import CountriesCountWidget from '../CountriesCountWidget';
 import ReportsRateWidget from '../ReportsRateWidget';
 import WeekdayBreakdownWidget from '../WeekdayBreakdownWidget';
 import CountriesBreakdownWidget from '../CountriesBreakdownWidget';
+import CategoriesBreakdownWidget from '../CategoriesBreakdownWidget';
 
 
 export default function Dashboard() {
   const { fetchInRange } = useReportsStats();
   useEffect(() => {
     const to = new Date();
-    const from = new Date(to.getTime() - 1000 * 60 * 60 * 24 * 5); // Take last 5 days for now
+    const from = new Date(to.getTime() - 1000 * 60 * 60 * 24 * 7); // Take last 7 days for now
     // TODO use react's useState hook to point the selected range
     fetchInRange(from, to);
   }, [fetchInRange]);
@@ -50,7 +51,7 @@ export default function Dashboard() {
               <CountriesBreakdownWidget />
             </Grid>
             <Grid item xs={12} md={6} lg={4}>
-
+              <CategoriesBreakdownWidget />
             </Grid>
           </Grid>
         </MDBox>

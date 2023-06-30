@@ -5,11 +5,16 @@ import ComplexStatisticsCard from '../../mdb/components/Cards/StatisticsCards/Co
 
 export default function ReportsRateWidget() {
   const { stats } = useReportsStats();
+  const count = stats?.hasOwnProperty('rate')
+    ? +(stats.rate).toFixed(2)
+    : '...';
+
+  if (stats?.hasOwnProperty('rate') === false) return null;
   return <MDBox mb={1.5}>
     <ComplexStatisticsCard
       icon="av_timer"
       title="Reports rate"
-      count={stats?.rate ?? '...'}
+      count={count}
       percentage={{
         color: 'success',
         amount: '',
